@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="472.0" style="-fx-background-color: #4f90ff; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectloginoverview.Register_viewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="472.0" style="-fx-background-color: #4f90ff; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectloginoverview.Register_viewController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.20001220703125" minWidth="10.0" prefWidth="27.00001220703125" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0000225067139" minWidth="10.0" prefWidth="420.59998779296876" />
@@ -26,31 +26,31 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Text fill="#11416b" layoutX="128.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTER" textAlignment="CENTER">
+            <Text fill="#11416b" layoutX="118.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTER" textAlignment="CENTER">
                <font>
                   <Font name="Eras Bold ITC" size="36.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="456.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <TextField fx:id="registerName" layoutX="124.0" layoutY="170.0" prefHeight="35.0" prefWidth="223.0" promptText="NAME">
                <font>
                   <Font name="Eras Bold ITC" size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="125.0" layoutY="361.0" mnemonicParsing="false" onAction="#signUp" prefHeight="34.0" prefWidth="193.0" text="Sign-up">
+            <Button layoutX="112.0" layoutY="351.0" mnemonicParsing="false" onAction="#signUp" prefHeight="34.0" prefWidth="193.0" text="Sign-up">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="165.0" layoutY="420.0" mnemonicParsing="false" onAction="#signIn" prefHeight="34.0" prefWidth="109.0" text="Sign-in">
+            <Button layoutX="154.0" layoutY="410.0" mnemonicParsing="false" onAction="#signIn" prefHeight="34.0" prefWidth="109.0" text="Sign-in">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Text fill="#11416b" layoutX="146.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have account ?" textAlignment="CENTER">
+            <Text fill="#11416b" layoutX="127.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have account ?" textAlignment="CENTER">
                <font>
                   <Font name="Eras Bold ITC" size="14.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Image url="@../../../img/profile-user.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="135.0" fitWidth="135.0" layoutX="152.0" layoutY="-8.0">
+            <ImageView fitHeight="135.0" fitWidth="135.0" layoutX="141.0" layoutY="-7.0">
                <image>
                   <Image url="@../../../img/register.png" />
                </image>

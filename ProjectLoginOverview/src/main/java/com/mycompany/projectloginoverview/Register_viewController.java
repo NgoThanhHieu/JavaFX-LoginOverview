@@ -5,6 +5,8 @@
 package com.mycompany.projectloginoverview;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,8 +93,6 @@ public class Register_viewController implements Initializable {
                 Users newUser1 = new Users(name1, password1, sex1);
                 listOfUsers.add(newUser);
                 listOfUsers.add(newUser1);
-                sexCount();
-                System.out.println(getCountMen());
 
 //                int sexCount = Integer.parseInt(newUser.getUserSex());
 //                System.out.println(sexCount);
@@ -141,24 +141,20 @@ public class Register_viewController implements Initializable {
         }
     }
 
-    public void sexCount() {
-        countMen = 0;
-        countFemale = 0;
-        for (Users usersSex : listOfUsers) {
-            if (usersSex.getUserSex().equals("male")) {
+    public Map<String, Integer> sexCount(ObservableList<Users> users) {
+        int countMen = 0;
+        int countFemale = 0;
+        for (Users user : users) {
+            if (user.getUserSex().equals("male")) {
                 countMen++;
-            } else if (usersSex.getUserSex().equals("female")) {
+            } else if (user.getUserSex().equals("female")) {
                 countFemale++;
             }
         }
-    }
-
-    public int getCountMen() {
-        return countMen;
-    }
-
-    public int getCountFemale() {
-        return countFemale;
+        Map<String, Integer> result = new HashMap<>();
+        result.put("Male", countMen);
+        result.put("Female", countFemale);
+        return result;
     }
 
 }

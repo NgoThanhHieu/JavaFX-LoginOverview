@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="472.0" style="-fx-background-color: #4f90ff; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectloginoverview.Login_viewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="472.0" style="-fx-background-color: #4f90ff; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projectloginoverview.Login_viewController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.20001220703125" minWidth="10.0" prefWidth="27.8" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.20001220703125" minWidth="10.0" prefWidth="27.00001220703125" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0000225067139" minWidth="10.0" prefWidth="419.8" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.4000244140625" minWidth="10.0" prefWidth="26.800012207031273" />
   </columnConstraints>
@@ -26,7 +26,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Text fill="#11416b" layoutX="161.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER">
+            <Text fill="#11416b" layoutX="147.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER">
                <font>
                   <Font name="Eras Bold ITC" size="36.0" />
                </font>
@@ -40,17 +40,17 @@
                   <Font name="Eras Bold ITC" size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="125.0" layoutY="322.0" mnemonicParsing="false" onAction="#signIn" prefHeight="34.0" prefWidth="193.0" text="Sign-in">
+            <Button layoutX="112.0" layoutY="324.0" mnemonicParsing="false" onAction="#signIn" prefHeight="34.0" prefWidth="193.0" text="Sign-in">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="167.0" layoutY="427.0" mnemonicParsing="false" onAction="#signUp" prefHeight="34.0" prefWidth="109.0" text="Sign-up">
+            <Button layoutX="154.0" layoutY="412.0" mnemonicParsing="false" onAction="#signUp" prefHeight="34.0" prefWidth="109.0" text="Sign-up">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Text fill="#11416b" layoutX="148.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account ?" textAlignment="CENTER">
+            <Text fill="#11416b" layoutX="135.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account ?" textAlignment="CENTER">
                <font>
                   <Font name="Eras Bold ITC" size="14.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Image url="@../../../img/profile-user.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="135.0" fitWidth="135.0" layoutX="152.0" layoutY="-8.0">
+            <ImageView fitHeight="135.0" fitWidth="135.0" layoutX="141.0" layoutY="-7.0">
                <image>
                   <Image url="@../../../img/account.png" />
                </image>
