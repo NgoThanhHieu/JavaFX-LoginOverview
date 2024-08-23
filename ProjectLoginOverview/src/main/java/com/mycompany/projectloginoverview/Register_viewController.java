@@ -27,6 +27,10 @@ import javafx.stage.Stage;
  *
  * @author ngo
  */
+/**
+ * Controller for the registration view. Handles user registration and
+ * navigation to other views.
+ */
 public class Register_viewController implements Initializable {
 
     @FXML
@@ -45,22 +49,12 @@ public class Register_viewController implements Initializable {
 
     private int countMen;
     private int countFemale;
-
+    // Array of sex options for the ChoiceBox
     private String[] sex = {"male", "female"};
-    /*
-    ObservableList is a special list that automatically updates any graphical element
-    (e.g., ListView) when you add, remove, or modify items in it.
-     */
-    private ObservableList<Users> listOfUsers;
 
-    /*
-    users is the list that will contain all the users (objects of the User class).
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         registerSex.getItems().addAll(sex);
-        listOfUsers = FXCollections.observableArrayList();
-
     }
 
     /*
@@ -70,36 +64,31 @@ public class Register_viewController implements Initializable {
     @FXML
     private void signUp(ActionEvent event) {
         try {
+            // Validate input fields
             if (registerName.getText().isBlank() || registerPassword.getText().isBlank() || registerSex.getValue() == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error someting went wrong");
-                alert.setContentText("Type in name and password and choose sex... Please");
+                alert.setTitle("Chyba");
+                alert.setContentText("Zadejte jméno, heslo a vyberte pohlaví.");
                 alert.showAndWait();
             } else {
-                String name1 = "John Doe";  // Například jméno
-                String password1 = "password123";  // Například heslo
-                String sex1 = "male";  // Pohlaví, např. "male" nebo "female"
-
-                /*
-                When you switch from one part of the application to another (e.g., from Register_view to OverviewView), you use FXMLLoader, which loads the new scene. 
-                During this process, you get access to the controller of the new scene (OverviewView), allowing you to pass the user list to it.
-                 */
                 String name = registerName.getText();
                 String password = registerPassword.getText();
                 String sex = registerSex.getValue();
 
                 Users newUser = new Users(name, password, sex);
-                Users newUser1 = new Users(name1, password1, sex1);
-                listOfUsers.add(newUser);
-                listOfUsers.add(newUser1);
 
-//                int sexCount = Integer.parseInt(newUser.getUserSex());
-//                System.out.println(sexCount);
+                UsersDAO usersDAO = new UsersDAO();// Create an instance of UsersDAO
+                usersDAO.saveUser(newUser); // Save the new user to the database
+
+                /*
+                When you switch from one part of the application to another (e.g., from Register_view to OverviewView), you use FXMLLoader, which loads the new scene. 
+                During this process, you get access to the controller of the new scene (OverviewView), allowing you to pass the user list to it.
+                 */
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("overview.fxml"));
                 root = loader.load();
 
-                OverviewController overView = loader.getController(); //loader.getController() lets you get the instance of OverviewController.
-                overView.setUsers(getUsers());  // Passing the user list to OverviewController.
+                OverviewController overView = loader.getController(); //This line retrieves the controller instance for the FXML file that was loaded by FXMLLoader.
+                overView.setUsers(usersDAO.getAllUsers());  //  Retrieve all users from the database
                 //calls the setUsers method in OverviewController to pass the user list to it.
 
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -118,10 +107,11 @@ public class Register_viewController implements Initializable {
         }
     }
 
-    public ObservableList<Users> getUsers() {
-        return listOfUsers;
-    }
-
+    /**
+     * Handles the sign-in action. Navigates to the login view.
+     *
+     * @param event Action event triggered by the sign-in button
+     */
     @FXML
     private void signIn(ActionEvent event) {
         try {
@@ -140,6 +130,11 @@ public class Register_viewController implements Initializable {
         }
     }
 
+    /*
+         * Counts the number of male and female users in the provided list.
+     * @param users ObservableList of Users objects
+     * @return Map containing counts of male and female users
+     */
     public Map<String, Integer> sexCount(ObservableList<Users> users) {
         int countMen = 0;
         int countFemale = 0;
@@ -151,8 +146,8 @@ public class Register_viewController implements Initializable {
             }
         }
         Map<String, Integer> result = new HashMap<>();
-        result.put("Male", countMen);
-        result.put("Female", countFemale);
+        result.put("Male", countMen); // Add count of male users to the map
+        result.put("Female", countFemale); // Add count of female users to the map
         return result;
     }
 

@@ -27,6 +27,10 @@ import javafx.stage.Stage;
  *
  * @author ngo
  */
+/**
+ * Controller for the login view. Handles user login and navigation to other
+ * views.
+ */
 public class Login_viewController implements Initializable {
 
     @FXML
@@ -38,22 +42,33 @@ public class Login_viewController implements Initializable {
     private Scene scene;
     private Stage stage;
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
     }
 
+    /**
+     * Handles the sign-in action. Validates the user's credentials and
+     * navigates to the overview view if successful.
+     *
+     * @param event Action event triggered by the sign-in button
+     */
     @FXML
     private void signIn(ActionEvent event) {
-        try {
-            if (loginName.getText().isBlank() && loginPassword.getText().isBlank()) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error someting went wrong");
-                alert.setContentText("Type in name and password please");
-                alert.showAndWait();
-            } else {
-                
+        String userName = loginName.getText();
+        String password = loginPassword.getText();
+
+        UsersDAO usersDAO = new UsersDAO();// Create an instance of UsersDAO to interact with the database
+        boolean isValidUser = usersDAO.validateUser(userName, password); // Validate the user's credentials
+
+        if (userName.isBlank() || password.isBlank()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Please enter both username and password");
+            alert.showAndWait();
+        } else if (isValidUser) {
+            try {
+                // Load the overview view if the user is valid
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("overview.fxml"));
                 root = loader.load();
 
@@ -61,16 +76,25 @@ public class Login_viewController implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Unable to load the overview view");
+                alert.showAndWait();
             }
-        } catch (Exception e) {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setContentText("Can't load");
+            alert.setTitle("Login Failed");
+            alert.setContentText("Invalid username or password");
             alert.showAndWait();
         }
     }
 
+    /**
+     * Handles the sign-up action. Navigates to the registration view.
+     *
+     * @param event Action event triggered by the sign-up button
+     */
     @FXML
     private void signUp(ActionEvent event) {
         try {
@@ -83,10 +107,9 @@ public class Login_viewController implements Initializable {
             stage.show();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Someting went wrong");
-            alert.setContentText("Can't load a second Calculator");
+            alert.setTitle("Error");
+            alert.setContentText("Unable to load the registration view");
             alert.showAndWait();
         }
     }
-
 }
